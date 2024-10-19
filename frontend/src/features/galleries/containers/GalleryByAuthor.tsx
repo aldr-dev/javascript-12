@@ -40,7 +40,7 @@ const GalleryByAuthor = () => {
   return (
     <>
       <Box display={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <Typography sx={{mb: 2}} variant="h5" fontWeight="600" color="#000">Галерея: {displayName}</Typography>
+        <Typography sx={{mb: 2}} variant="h5" fontWeight="600" color="#000">Галерея: {displayName || user?.displayName}</Typography>
         {isMyGallery && (
           <Button component={Link} to="/add-new-photo" sx={{mb: 1, backgroundColor: '#E60023', '&:hover': {backgroundColor: '#cb021d'}}} variant="contained">Добавить новое фото</Button>
         )}
