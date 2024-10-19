@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import config from './config';
 import mongoose from 'mongoose';
+import usersRouter from './routers/users';
+import galleriesRouter from './routers/galleries';
 
 const app = express();
 const port = 8000;
@@ -9,6 +11,8 @@ const port = 8000;
 app.use(cors(config.corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/users', usersRouter);
+app.use('/galleries', galleriesRouter);
 
 const run = async () => {
   await mongoose.connect(config.database);
