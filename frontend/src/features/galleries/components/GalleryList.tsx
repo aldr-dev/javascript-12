@@ -37,7 +37,7 @@ const GalleryList: React.FC<Props> = ({gallery}) => {
   const isAuthor = gallery.user._id === user?._id;
   const isAdmin = user?.role === 'admin';
   const shouldShowSubtitle = location.pathname.includes('gallery-by-author') || location.pathname.includes('my-gallery');
-  const isMyGallery = location.pathname.includes('my-gallery');
+  const isMyGallery = location.pathname.includes('my-gallery') || location.pathname.includes('gallery-by-author');
 
   return (
     <>

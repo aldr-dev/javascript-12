@@ -31,9 +31,9 @@ galleriesRouter.get('/', async (req, res, next) => {
     const authorId = req.query.author as string;
 
     if (authorId) {
-      imagesData = await Gallery.find({user: authorId}).populate('user', 'displayName');
+      imagesData = await Gallery.find({user: authorId}).populate('user', 'displayName').sort({_id: -1});
     } else {
-      imagesData = await Gallery.find().populate('user', 'displayName');
+      imagesData = await Gallery.find().populate('user', 'displayName').sort({_id: -1});
     }
 
     return res.send(imagesData);

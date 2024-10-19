@@ -19,6 +19,7 @@ const GalleryByAuthor = () => {
   const fetchGalleryLoading = useAppSelector(selectFetchImagesByAuthorLoading);
 
   const displayName = imagesByAuthorData.length > 0 ? imagesByAuthorData[0].user.displayName : null;
+  const foundUserId = imagesByAuthorData.length > 0 ? imagesByAuthorData[0].user._id : null;
   const isMyGallery = location.pathname.includes('my-gallery');
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const GalleryByAuthor = () => {
     <>
       <Box display={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <Typography sx={{mb: 2}} variant="h5" fontWeight="600" color="#000">Галерея: {displayName || user?.displayName}</Typography>
-        {isMyGallery && (
+        {user && (foundUserId === user?._id) && (
           <Button component={Link} to="/add-new-photo" sx={{mb: 1, backgroundColor: '#E60023', '&:hover': {backgroundColor: '#cb021d'}}} variant="contained">Добавить новое фото</Button>
         )}
       </Box>
